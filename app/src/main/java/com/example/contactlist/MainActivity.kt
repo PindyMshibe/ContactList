@@ -19,47 +19,26 @@ class MainActivity : AppCompatActivity() {
         //link recycler view to layout manager
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val button = findViewById<Button>(R.id.readContact)
-
-        button.setOnClickListener {
-
-            val contactList: MutableList<User> = ArrayList()
-
-            val contacts = contentResolver.query(
-                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                null,
-                null,
-                null,
-                null
-            )
-
-            while (contacts!!.moveToNext()) {
-                val name =
-                    contacts.getString(contacts.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
-                val number =
-                    contacts.getString(contacts.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                val obj = User(name, number)
-                obj.name = name
-                obj.number = number
-
-                contactList.add(obj)
-            }
 
 
-            //create the adapter and link with recyclerview
-            val adapter = userAdapter(contactList)
-            recyclerView.adapter = userAdapter(contactList)
+        val contactList = ArrayList<User>()
+
+        contactList.add(User("Phindile 1", "IT developer", "https://www.xitsonga.org/assets/images/Mukondleteri.jpg"))
+        contactList.add(User("Phindile 2", "IT Tech", "https://www.xitsonga.org/assets/images/Mukondleteri.jpg"))
 
 
-            //pass the user clicked onto the next screen
-            adapter.onItemClick = { user ->
-                val intent = Intent(this, UserDetails::class.java)
-                intent.putExtra("User", user)
-                startActivity(intent)
+        //create the adapter and link with recyclerview
+        val adapter = userAdapter(contactList)
+        recyclerView.adapter = adapter
 
-            }
+
+        //pass the user clicked onto the next screen
+        adapter.onItemClick = { user ->
+            val intent = Intent(this, UserDetails::class.java)
+            intent.putExtra("User", user)
+            startActivity(intent)
+
         }
-
     }
 }
 

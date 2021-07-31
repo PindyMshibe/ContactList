@@ -25,6 +25,7 @@ class UserDetails : AppCompatActivity() {
         val imageView = findViewById<ImageView>(R.id.profileImage)
         val button = findViewById<Button>(R.id.takePicture)
         val shareProfile = findViewById<Button>(R.id.shareProfile)
+        val audioPlayer = findViewById<Button>(R.id.playSound)
 
         //get data
         val user = intent.getParcelableExtra<User>("User")
@@ -32,16 +33,23 @@ class UserDetails : AppCompatActivity() {
         //add user name to text view
         textView.text = user?.name
 
-        //Picasso.get().load(user?.image).into(imageView)
+        //bind image to the view
+        Picasso.get().load(user?.profileurl).into(imageView)
 
         button.setOnClickListener {
-            this.displayPhoto()
+            val intent= Intent(this, TakePicture::class.java)
+            startActivity(intent)
         }
 
         shareProfile.setOnClickListener{
             if (user !=null){
                 this.shareProfile(user)
             }
+        }
+
+        audioPlayer.setOnClickListener {
+            val intent = Intent(this, AudioPlays::class.java)
+            startActivity(intent)
         }
     }
 

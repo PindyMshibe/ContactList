@@ -7,6 +7,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class User (
     var name: String,
-    var number: String,
-    var image : Bitmap? = null
+    val number: String,
+    val profileurl : String
     ): Parcelable

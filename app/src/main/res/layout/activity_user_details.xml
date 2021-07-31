@@ -29,27 +29,34 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage"/>
 
-    <Button
-        android:id="@+id/takePicture"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Take Picture"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:orientation="horizontal"
+        android:dividerPadding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/shareProfile"
-        android:layout_width="142dp"
-        android:layout_height="54dp"
-        android:text="Share profile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/takePicture" />
+        <Button
+            android:id="@+id/takePicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TakePicture" />
+
+        <Button
+            android:id="@+id/shareProfile"
+            android:layout_width="142dp"
+            android:layout_height="54dp"
+            android:text="ShareP" />
+
+        <Button
+            android:id="@+id/playSound"
+            android:layout_width="142dp"
+            android:layout_height="54dp"
+            android:text="Sound" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
